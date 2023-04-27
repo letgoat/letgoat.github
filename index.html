@@ -4,7 +4,7 @@
 <head>
 	<title>明城</title>
 	<!-- custom-theme -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!--显示窗口的一些信息-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
@@ -48,13 +48,13 @@
 							<ul class="nav navbar-nav">
 								<li class="active"><a href="index.html">首页</a></li>
 								<li><a href="services.html">服务</a></li>
-								<li><a href="projects.html">事务</a></li>
+								<li><a href="projects.html">活动</a></li>
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">简介 <b
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">留言板 <b
 											class="caret"></b></a>
 									<ul class="dropdown-menu agile_short_dropdown">
-										<li><a href="icons.html">历史简介</a></li>
-										<li><a href="typography.html">成员简介</a></li>
+										<li><a href="icons.html">今日总结</a></li>
+										<li><a href="typography.html">轻语</a></li>
 									</ul>
 								</li>
 								<li><a href="contact.html">联系我们</a></li>
@@ -74,20 +74,20 @@
 								</li>
 								<li>
 									<div class="agileits_w3layouts_banner_info">
-										<p>Your Home Deserves Special And Selected Furnishings</p>
-										<h3>Authentic And Luxurious</h3>
+										<p>Reality and dream meet</p>
+										<h3>现实和梦想交汇</h3>
 									</div>
 								</li>
 								<li>
 									<div class="agileits_w3layouts_banner_info">
-										<p>Your Home Deserves Special And Selected Furnishings</p>
-										<h3>Amazing Exclusive Design</h3>
+										<p>Young people with aspirations gather here</p>
+										<h3>有志青年汇集于此</h3>
 									</div>
 								</li>
 								<li>
 									<div class="agileits_w3layouts_banner_info">
-										<p>Your Home Deserves Special And Selected Furnishings</p>
-										<h3>Authentic And Luxurious</h3>
+										<p>Freedom and fun</p>
+										<h3>自由和有趣</h3>
 									</div>
 								</li>
 							</ul>
@@ -108,20 +108,261 @@
 					<!-- //flexSlider -->
 
 				</div>
-				<div class="agile_banner_social">
-					<ul class="agileits_social_list">
-						<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-						</li>
-						<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-						</li>
-						<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-					</ul>
+				<!-- <div class="agile_banner_social"> -->
+				<!-- <ul class="agileits_social_list">
+					<li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					</li>
+					<li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+					</li>
+					<li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+					</li>
+					<li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
+					</li>
+				</ul> -->
+				<div class="box">
+					<div class="barrage-container-wrap clearfix">
+						<div class="barrage-container">
+						</div>
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
+	</div>
 	<!-- 横幅 -->
+	<!-- <div class="send-wrap">
+		<input type="text" class="input" placeholder="明城人写下你的心里话吧">
+		<span class="send-btn">send</span>
+	</div>
+
+
+
+	<script>
+		; (function () {
+			var barrageArray = [
+				{
+					url: '',
+					text: '6666',
+					level: 10
+				},
+				{
+					url: '',
+					text: '阿爸阿爸',
+					level: 10
+				},
+				{
+					url: '',
+					text: '那些北风',
+					level: 10
+				},
+				{
+					url: '',
+					text: '我是你得第',
+					level: 10
+				},
+				{
+					url: '',
+					text: '没事早点回家吃饭啊',
+					level: 10
+				},
+				{
+					url: '',
+					text: '阿里嘎多',
+					level: 10
+				},
+				{
+					url: '',
+					text: '背景音乐真好听啊',
+					level: 10
+				},
+				{
+					url: '',
+					text: '何仁俊',
+					level: 10
+				},
+				{
+					url: '',
+					text: 'good evening',
+					level: 10
+				},
+				{
+					url: '',
+					text: '鬼子前辈',
+					level: 10
+				},
+			];
+			var barrageColorArray = [
+				'#0099CC', '#333333', '#009966', '#FFFF66', '#9933FF', '#FFFF99', '#CCCCFF', '#CC9933', '#FFFF66'
+			];
+			var barrageTipWidth = 10; //提示语的长度
+
+			var barrageBoxWrap = document.querySelector('.barrage-container-wrap');;
+			var barrageBox = document.querySelector('.barrage-container');
+			var inputBox = document.querySelector('.input');
+			var sendBtn = document.querySelector('.send-btn');
+
+			//容器的宽高度
+			var barrageWidth = ~~window.getComputedStyle(barrageBoxWrap).width.replace('px', '');
+			var barrageHeight = ~~window.getComputedStyle(barrageBoxWrap).height.replace('px', '');
+
+			//发送
+			function sendMsg() {
+				var inputValue = inputBox.value;
+				inputValue.replace(/\ +/g, "");
+
+				if (inputValue.length <= 0) {
+					alert('请输入');
+					return false;
+				}
+
+				//生成弹幕
+				createBarrage(inputValue, true);
+				inputBox.value = '';
+			}
+
+
+			//创建弹幕
+			function createBarrage(msg, isSendMsg) {
+				var divNode = document.createElement('div');
+				var spanNode = document.createElement('span');
+
+				divNode.innerHTML = msg;
+				divNode.classList.add('barrage-item');
+				barrageBox.appendChild(divNode);
+
+				spanNode.innerHTML = '';
+				spanNode.classList.add('barrage-tip');
+				divNode.appendChild(spanNode);
+
+				barrageOffsetLeft = getRandom(barrageWidth, barrageWidth * 2);
+				barrageOffsetLeft = isSendMsg ? barrageWidth : barrageOffsetLeft
+				barrageOffsetTop = getRandom(10, barrageHeight - 10);
+				barrageColor = barrageColorArray[Math.floor(Math.random() * (barrageColorArray.length))];
+
+				//执行初始化滚动
+				initBarrage.call(divNode, {
+					left: barrageOffsetLeft,
+					top: barrageOffsetTop,
+					color: barrageColor
+				});
+			}
+
+			//初始化弹幕移动(速度，延迟)
+			function initBarrage(obj) {
+				//初始化
+				obj.top = obj.top || 0;
+				obj.class = obj.color || '#fff';
+				this.style.left = obj.left + 'px';
+				this.style.top = obj.top + 'px';
+				this.style.color = obj.color;
+
+				//添加属性
+				this.distance = 0;
+				this.width = ~~window.getComputedStyle(this).width.replace('px', '');
+				this.offsetLeft = obj.left;
+				this.timer = null;
+
+				//弹幕子节点
+				var barrageChileNode = this.children[0];
+				barrageChileNode.style.left = (this.width - barrageTipWidth) / 2 + 'px';
+
+				//运动
+				barrageAnimate(this);
+
+				//停止
+				this.onmouseenter = function () {
+					barrageChileNode.style.display = 'block';
+					cancelAnimationFrame(this.timer);
+				};
+
+				this.onmouseleave = function () {
+					barrageChileNode.style.display = 'none';
+					barrageAnimate(this);
+				};
+
+				//举报
+				barrageChileNode.onclick = function () {
+					alert('举报成功');
+				}
+			}
+
+			//弹幕动画
+			function barrageAnimate(obj) {
+				move(obj);
+
+				if (Math.abs(obj.distance) < obj.width + obj.offsetLeft) {
+					obj.timer = requestAnimationFrame(function () {
+						barrageAnimate(obj);
+					});
+				} else {
+					cancelAnimationFrame(obj.timer);
+					//删除节点
+					obj.parentNode.removeChild(obj);
+				}
+			}
+
+			//移动
+			function move(obj) {
+				obj.distance--;
+				obj.style.transform = 'translateX(' + obj.distance + 'px)';
+				obj.style.webkitTransform = 'translateX(' + obj.distance + 'px)';
+			}
+
+			//随机获取高度
+			function getRandom(start, end) {
+				return start + (Math.random() * (end - start));
+			}
+
+
+			/*******初始化事件**********/
+			//系统数据
+			barrageArray.forEach(function (item, index) {
+				createBarrage(item.text, false);
+			});
+
+			//点击发送
+			sendBtn.onclick = sendMsg;   //点击发送
+
+			//回车
+			inputBox.onkeydown = function (e) {
+				e = e || window.event;
+				if (e.keyCode == 13) {
+					send();
+				}
+			}
+
+		})()
+
+			//兼容写法
+			(function () {
+				var lastTime = 0;
+				var vendors = ['webkit', 'moz'];
+				for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+					window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+					window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    // Webkit中此取消方法的名字变了
+						window[vendors[x] + 'CancelRequestAnimationFrame'];
+				}
+
+				if (!window.requestAnimationFrame) {
+					window.requestAnimationFrame = function (callback, element) {
+						var currTime = new Date().getTime();
+						var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+						var id = window.setTimeout(function () {
+							callback(currTime + timeToCall);
+						}, timeToCall);
+						lastTime = currTime + timeToCall;
+						return id;
+					};
+				}
+				if (!window.cancelAnimationFrame) {
+					window.cancelAnimationFrame = function (id) {
+						clearTimeout(id);
+					};
+				}
+			}());
+	</script> -->
+
 
 	<!--简介-about -->
 	<div class="jarallax agile-about w3ls-section">
@@ -278,7 +519,8 @@
 	<div class="stats jarallax">
 		<div class="container">
 			<h3 class="w3ls_head"><span class="thr">Our </span>Stats</h3>
-			<p class="w3agile fru">While designing your living room, it’s a good idea to think about certain key aspects
+			<p class="w3agile fru">While designing your living room, it’s a good idea to think about certain key
+				aspects
 				like space available, the colours to be used, the kind of furniture and accessories you fancy.
 			</p>
 			<div class="stat_top">
@@ -372,31 +614,32 @@
 		<div class="container">
 			<div class="w3_agile_footer_grids">
 				<div class="col-md-4 w3_agile_footer_grid">
-					<h3>Latest Tweets</h3>
+					<h3>最新公众号文章</h3>
 					<ul class="agile_footer_grid_list">
-						<li><i class="fa fa-twitter" aria-hidden="true"></i>Nam libero tempore, cum soluta nobis est
-							eligendi optio
-							cumque nihil impedit. <span>1 day ago</span></li>
-						<li><i class="fa fa-twitter" aria-hidden="true"></i>Itaque earum rerum hic tenetur a sapiente
-							delectus <a href="mailto:info@mail.com">info@mail.com</a>
-							cumque nihil impedit. <span>2 days ago</span></li>
-					</ul>
-				</div>
-				<div class="col-md-4 w3_agile_footer_grid">
-					<h3>Navigation</h3>
-					<ul class="agileits_w3layouts_footer_grid_list">
-						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="index.html">Home</a>
+						<li><i class="fa fa-twitter" aria-hidden="true"></i>量子力学|对易子简介（1） <a
+								href="https://mp.weixin.qq.com/s/1233RjFgSreXKEmItBtWrw">点我查看<span>20 day ago</span>
 						</li>
-						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a
-								href="services.html">Services</a></li>
-						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a
-								href="projects.html">Projects</a></li>
-						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a
-								href="contact.html">Contact</a></li>
+						<li><i class="fa fa-twitter" aria-hidden="true"></i>明城往事稿|引子 <a
+								href="https://mp.weixin.qq.com/s/1233RjFgSreXKEmItBtWrw">点我查看</a>
+							<span>24 days ago</span>
+						</li>
 					</ul>
 				</div>
 				<div class="col-md-4 w3_agile_footer_grid">
-					<h3>Latest Works</h3>
+					<h3>导航栏</h3>
+					<ul class="agileits_w3layouts_footer_grid_list">
+						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="index.html">首页</a>
+						</li>
+						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="services.html">服务</a>
+						</li>
+						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="projects.html">事务</a>
+						</li>
+						<li><i class="fa fa-angle-double-right" aria-hidden="true"></i><a href="contact.html">联系我们</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-4 w3_agile_footer_grid">
+					<h3>精彩瞬间</h3>
 					<div class="w3_agileits_footer_grid_left">
 						<a href="#"><img src="images/s6.jpg" alt=" " class="img-responsive" /></a>
 					</div>
@@ -423,7 +666,7 @@
 				<div class="w3_newsletter_footer_grid_left">
 					<form action="#" method="post">
 						<input type="email" name="Email" placeholder="Email" required="">
-						<input type="submit" value="Send">
+						<input type="submit" value="发送">
 					</form>
 				</div>
 
@@ -431,8 +674,7 @@
 			</div>
 
 			<div class="agileinfo_copyright">
-				<p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
-						href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+				<p>版权所有@明城<a target="_blank" href="http://www.tju.edu.cn/"> 其他基地</a></p>
 			</div>
 		</div>
 	</div>
