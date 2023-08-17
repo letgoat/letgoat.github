@@ -130,240 +130,7 @@
 		</div>
 	</div>
 	</div>
-	<!-- 横幅 -->
-	<!-- <div class="send-wrap">
-		<input type="text" class="input" placeholder="明城人写下你的心里话吧">
-		<span class="send-btn">send</span>
-	</div>
-
-
-
-	<script>
-		; (function () {
-			var barrageArray = [
-				{
-					url: '',
-					text: '6666',
-					level: 10
-				},
-				{
-					url: '',
-					text: '阿爸阿爸',
-					level: 10
-				},
-				{
-					url: '',
-					text: '那些北风',
-					level: 10
-				},
-				{
-					url: '',
-					text: '我是你得第',
-					level: 10
-				},
-				{
-					url: '',
-					text: '没事早点回家吃饭啊',
-					level: 10
-				},
-				{
-					url: '',
-					text: '阿里嘎多',
-					level: 10
-				},
-				{
-					url: '',
-					text: '背景音乐真好听啊',
-					level: 10
-				},
-				{
-					url: '',
-					text: '何仁俊',
-					level: 10
-				},
-				{
-					url: '',
-					text: 'good evening',
-					level: 10
-				},
-				{
-					url: '',
-					text: '鬼子前辈',
-					level: 10
-				},
-			];
-			var barrageColorArray = [
-				'#0099CC', '#333333', '#009966', '#FFFF66', '#9933FF', '#FFFF99', '#CCCCFF', '#CC9933', '#FFFF66'
-			];
-			var barrageTipWidth = 10; //提示语的长度
-
-			var barrageBoxWrap = document.querySelector('.barrage-container-wrap');;
-			var barrageBox = document.querySelector('.barrage-container');
-			var inputBox = document.querySelector('.input');
-			var sendBtn = document.querySelector('.send-btn');
-
-			//容器的宽高度
-			var barrageWidth = ~~window.getComputedStyle(barrageBoxWrap).width.replace('px', '');
-			var barrageHeight = ~~window.getComputedStyle(barrageBoxWrap).height.replace('px', '');
-
-			//发送
-			function sendMsg() {
-				var inputValue = inputBox.value;
-				inputValue.replace(/\ +/g, "");
-
-				if (inputValue.length <= 0) {
-					alert('请输入');
-					return false;
-				}
-
-				//生成弹幕
-				createBarrage(inputValue, true);
-				inputBox.value = '';
-			}
-
-
-			//创建弹幕
-			function createBarrage(msg, isSendMsg) {
-				var divNode = document.createElement('div');
-				var spanNode = document.createElement('span');
-
-				divNode.innerHTML = msg;
-				divNode.classList.add('barrage-item');
-				barrageBox.appendChild(divNode);
-
-				spanNode.innerHTML = '';
-				spanNode.classList.add('barrage-tip');
-				divNode.appendChild(spanNode);
-
-				barrageOffsetLeft = getRandom(barrageWidth, barrageWidth * 2);
-				barrageOffsetLeft = isSendMsg ? barrageWidth : barrageOffsetLeft
-				barrageOffsetTop = getRandom(10, barrageHeight - 10);
-				barrageColor = barrageColorArray[Math.floor(Math.random() * (barrageColorArray.length))];
-
-				//执行初始化滚动
-				initBarrage.call(divNode, {
-					left: barrageOffsetLeft,
-					top: barrageOffsetTop,
-					color: barrageColor
-				});
-			}
-
-			//初始化弹幕移动(速度，延迟)
-			function initBarrage(obj) {
-				//初始化
-				obj.top = obj.top || 0;
-				obj.class = obj.color || '#fff';
-				this.style.left = obj.left + 'px';
-				this.style.top = obj.top + 'px';
-				this.style.color = obj.color;
-
-				//添加属性
-				this.distance = 0;
-				this.width = ~~window.getComputedStyle(this).width.replace('px', '');
-				this.offsetLeft = obj.left;
-				this.timer = null;
-
-				//弹幕子节点
-				var barrageChileNode = this.children[0];
-				barrageChileNode.style.left = (this.width - barrageTipWidth) / 2 + 'px';
-
-				//运动
-				barrageAnimate(this);
-
-				//停止
-				this.onmouseenter = function () {
-					barrageChileNode.style.display = 'block';
-					cancelAnimationFrame(this.timer);
-				};
-
-				this.onmouseleave = function () {
-					barrageChileNode.style.display = 'none';
-					barrageAnimate(this);
-				};
-
-				//举报
-				barrageChileNode.onclick = function () {
-					alert('举报成功');
-				}
-			}
-
-			//弹幕动画
-			function barrageAnimate(obj) {
-				move(obj);
-
-				if (Math.abs(obj.distance) < obj.width + obj.offsetLeft) {
-					obj.timer = requestAnimationFrame(function () {
-						barrageAnimate(obj);
-					});
-				} else {
-					cancelAnimationFrame(obj.timer);
-					//删除节点
-					obj.parentNode.removeChild(obj);
-				}
-			}
-
-			//移动
-			function move(obj) {
-				obj.distance--;
-				obj.style.transform = 'translateX(' + obj.distance + 'px)';
-				obj.style.webkitTransform = 'translateX(' + obj.distance + 'px)';
-			}
-
-			//随机获取高度
-			function getRandom(start, end) {
-				return start + (Math.random() * (end - start));
-			}
-
-
-			/*******初始化事件**********/
-			//系统数据
-			barrageArray.forEach(function (item, index) {
-				createBarrage(item.text, false);
-			});
-
-			//点击发送
-			sendBtn.onclick = sendMsg;   //点击发送
-
-			//回车
-			inputBox.onkeydown = function (e) {
-				e = e || window.event;
-				if (e.keyCode == 13) {
-					send();
-				}
-			}
-
-		})()
-
-			//兼容写法
-			(function () {
-				var lastTime = 0;
-				var vendors = ['webkit', 'moz'];
-				for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-					window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-					window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    // Webkit中此取消方法的名字变了
-						window[vendors[x] + 'CancelRequestAnimationFrame'];
-				}
-
-				if (!window.requestAnimationFrame) {
-					window.requestAnimationFrame = function (callback, element) {
-						var currTime = new Date().getTime();
-						var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-						var id = window.setTimeout(function () {
-							callback(currTime + timeToCall);
-						}, timeToCall);
-						lastTime = currTime + timeToCall;
-						return id;
-					};
-				}
-				if (!window.cancelAnimationFrame) {
-					window.cancelAnimationFrame = function (id) {
-						clearTimeout(id);
-					};
-				}
-			}());
-	</script> -->
-
-
+	
 	<!--简介-about -->
 	<div class="jarallax agile-about w3ls-section">
 		<div class="container">
@@ -556,51 +323,50 @@
 	<!-- team -->
 	<div class="team">
 		<div class="container">
-			<h3 class="w3ls_head"><span>Our </span>Team</h3>
-			<p class="w3agile">While designing your living room, it’s a good idea to think about certain key aspects
-				like space available, the colours to be used, the kind of furniture and accessories you fancy.
-			</p>
+			<h3 class="w3ls_head"><span>主要</span>成员</h3>
+			<!-- <p class="w3agile">我们有着
+			</p> -->
 			<div class="agileits_team_grids">
 				<div class="col-md-4 agileits_team_grid">
 					<div class="agileits_team_grid_figure">
 						<img src="images/t1.jpg" alt=" " class="img-responsive" />
 					</div>
-					<h4>Jane Nguyen</h4>
-					<p>General Manager</p>
-					<p>+21 345 287 4556</p>
+					<h4>沈思余</h4>
+					<p>城主</p>
+					<p>QQ： 3210035395</p>
+					<p>微信：s1127162139</p>
 					<div class="social-icon">
-						<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
-						<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
-						<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+						
 					</div>
 				</div>
 				<div class="col-md-4 agileits_team_grid">
 					<div class="agileits_team_grid_figure">
 						<img src="images/t2.jpg" alt=" " class="img-responsive" />
 					</div>
-					<h4>James Doe</h4>
-					<p>Finance Executive</p>
-					<p>+21 345 287 4556</p>
+					<h4>陈眠云</h4>
+					<p>长老</p>
 					<div class="social-icon">
-						<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+						<!-- <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
 						<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
 						<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
-						<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+						<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> -->
+						<p>QQ： 2093319140</p>
+					    <p>微信：cxc18313730412</p>
 					</div>
 				</div>
 				<div class="col-md-4 agileits_team_grid">
 					<div class="agileits_team_grid_figure">
 						<img src="images/t3.jpg" alt=" " class="img-responsive" />
 					</div>
-					<h4>Laura Carl</h4>
-					<p>Management</p>
-					<p>+21 345 287 4556</p>
+					<h4>刘瑾瑶</h4>
+					<p>长老</p>
 					<div class="social-icon">
-						<a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+						<!-- <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
 						<a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
 						<a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
-						<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+						<a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a> -->
+						<p>QQ： 773397401</p>
+					    <p>微信：jl1061123</p>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -616,10 +382,10 @@
 				<div class="col-md-4 w3_agile_footer_grid">
 					<h3>最新公众号文章</h3>
 					<ul class="agile_footer_grid_list">
-						<li><i class="fa fa-twitter" aria-hidden="true"></i>量子力学|对易子简介（1） <a
+						<li></i>量子力学|对易子简介（1） <a
 								href="https://mp.weixin.qq.com/s/1233RjFgSreXKEmItBtWrw">点我查看<span>20 day ago</span>
 						</li>
-						<li><i class="fa fa-twitter" aria-hidden="true"></i>明城往事稿|引子 <a
+						<li></i>明城往事稿|引子 <a
 								href="https://mp.weixin.qq.com/s/1233RjFgSreXKEmItBtWrw">点我查看</a>
 							<span>24 days ago</span>
 						</li>
@@ -639,8 +405,8 @@
 					</ul>
 				</div>
 				<div class="col-md-4 w3_agile_footer_grid">
-					<h3>精彩瞬间</h3>
-					<div class="w3_agileits_footer_grid_left">
+					<h3>扫码关注我们</h3>
+					<!-- <div class="w3_agileits_footer_grid_left">
 						<a href="#"><img src="images/s6.jpg" alt=" " class="img-responsive" /></a>
 					</div>
 					<div class="w3_agileits_footer_grid_left">
@@ -654,7 +420,7 @@
 					</div>
 					<div class="w3_agileits_footer_grid_left">
 						<a href="#"><img src="images/s4.jpg" alt=" " class="img-responsive" /></a>
-					</div>
+					</div> -->
 					<div class="w3_agileits_footer_grid_left">
 						<a href="#"><img src="images/s5.jpg" alt=" " class="img-responsive" /></a>
 					</div>
